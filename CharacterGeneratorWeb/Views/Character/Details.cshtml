@@ -1,0 +1,130 @@
+﻿@model BusinessLogicLayer.CharacterBLL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CharacterBLL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharacterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharacterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StrengthScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StrengthScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DexterityScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DexterityScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConstitutionScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConstitutionScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntelligenceScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntelligenceScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WisdomScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WisdomScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CharismaScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CharismaScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.CharacterID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

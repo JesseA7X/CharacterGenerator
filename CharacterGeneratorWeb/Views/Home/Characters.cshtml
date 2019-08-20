@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BusinessLogicLayer.CharacterBLL>
+
+@{
+    ViewBag.Title = "Characters";
+}
+
+<h2>Characters</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CharacterID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CharacterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StrengthScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DexterityScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConstitutionScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IntelligenceScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WisdomScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CharismaScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CharacterID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CharacterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaceID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StrengthScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DexterityScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConstitutionScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IntelligenceScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WisdomScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CharismaScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaceName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.CharacterID }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.CharacterID }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.CharacterID })
+        </td>
+    </tr>
+}
+
+</table>

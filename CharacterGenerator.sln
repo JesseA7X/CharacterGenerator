@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterGenerator", "CharacterGenerator\CharacterGenerator.csproj", "{CAB79070-FC09-4C57-9744-C2DF0315A2E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{BDE10672-B83C-47EE-87F7-556C32582B16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D938D15-6FCC-4AF9-BBF1-BDC06F13C0D9}"
+	ProjectSection(SolutionItems) = preProject
+		CharacterGenerator.sql = CharacterGenerator.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumberjack", "Lumberjack\Lumberjack.csproj", "{F77DBA71-93A4-4499-A007-F59E1F46922B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{6258BEAD-E9A7-4A9B-AC42-F3E97070E527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterGeneratorWeb", "CharacterGeneratorWeb\CharacterGeneratorWeb.csproj", "{CF74FCAA-7048-4F1A-B799-C59B3F4BA37D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAB79070-FC09-4C57-9744-C2DF0315A2E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB79070-FC09-4C57-9744-C2DF0315A2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB79070-FC09-4C57-9744-C2DF0315A2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB79070-FC09-4C57-9744-C2DF0315A2E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE10672-B83C-47EE-87F7-556C32582B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE10672-B83C-47EE-87F7-556C32582B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE10672-B83C-47EE-87F7-556C32582B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE10672-B83C-47EE-87F7-556C32582B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77DBA71-93A4-4499-A007-F59E1F46922B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77DBA71-93A4-4499-A007-F59E1F46922B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77DBA71-93A4-4499-A007-F59E1F46922B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77DBA71-93A4-4499-A007-F59E1F46922B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6258BEAD-E9A7-4A9B-AC42-F3E97070E527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6258BEAD-E9A7-4A9B-AC42-F3E97070E527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6258BEAD-E9A7-4A9B-AC42-F3E97070E527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6258BEAD-E9A7-4A9B-AC42-F3E97070E527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF74FCAA-7048-4F1A-B799-C59B3F4BA37D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF74FCAA-7048-4F1A-B799-C59B3F4BA37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF74FCAA-7048-4F1A-B799-C59B3F4BA37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF74FCAA-7048-4F1A-B799-C59B3F4BA37D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29F7B1D3-AACD-41B1-925F-4F3C7676169E}
+	EndGlobalSection
+EndGlobal
