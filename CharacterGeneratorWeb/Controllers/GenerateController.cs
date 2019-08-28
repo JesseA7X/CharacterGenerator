@@ -8,22 +8,26 @@ using CharacterGeneratorWeb.Models;
 
 namespace CharacterGeneratorWeb
 {
-    public class GenerateController : Controller
+    [MustBeInRole(Roles = "Admin,VerifiedUser")]
+    public class GenerateController : Controller 
     {
         // GET: Generate
         public ActionResult Index()
         {
             using (ContextBLL ctx = new ContextBLL())
             {
+                
                 //CharacterBLL defcharacter = new CharacterBLL();
                 CharacterGeneratorModel defcharacter = new CharacterGeneratorModel();
             //defcharacter.CharacterID = 0;
+            
             defcharacter.StrengthScore = ctx.Roll();
                 defcharacter.DexterityScore = ctx.Roll();
                 defcharacter.ConstitutionScore = ctx.Roll();
                 defcharacter.IntelligenceScore = ctx.Roll();
                 defcharacter.WisdomScore = ctx.Roll();
                 defcharacter.CharismaScore = ctx.Roll();
+                defcharacter.CharacterName = " ";
                 var races = ctx.GetRaces(0,100);
                 var classes = ctx.GetClasses(0, 100);
                 SelectListItem blank = new SelectListItem();
@@ -68,7 +72,7 @@ namespace CharacterGeneratorWeb
                 ctx.CharacterModification(temp, RaceModifiers);
                 ctx.CharacterModification(temp, ClassModifiers);
                 defcharacter.ModifiedCharacter = temp;
-
+                defcharacter.CharacterName = " ";
 
                 var races = ctx.GetRaces(0, 100);
                 var classes = ctx.GetClasses(0, 100);
@@ -97,6 +101,34 @@ namespace CharacterGeneratorWeb
                 defcharacter.ClassNames = ClassItems;
                 defcharacter.RaceNames = RaceItems;
                 return View("Preview", defcharacter);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Create(CharacterGeneratorModel charmodel)
+        {
+            try
+            {
+                CharacterBLL defcharacter;
+                defcharacter = charmodel.ModifiedCharacter;
+                
+                using (ContextBLL ctx = new ContextBLL())
+                {
+                    UserBLL name = ctx.FindUserByUserName(User.Identity.Name);
+                    if (null == name)
+                    {
+                        ViewBag.Exeption = new Exception($"ugh username isnt valid: {User.Identity.Name}");
+                        return View("Error");
+                    }
+                    defcharacter.UserID = name.UserID;
+                    ctx.CreateCharacter(defcharacter);
+                }
+                return RedirectToAction("MyIndex", "MyCharacter");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Exception = ex;
+                return View("Error");
             }
         }
     }

@@ -1,20 +1,20 @@
 ﻿@model IEnumerable<BusinessLogicLayer.RoleBLL>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Roles";
 }
 
-<h2>Index</h2>
+<h2 style="color:white;">List of Roles</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th hidden>
             @Html.DisplayNameFor(model => model.RoleID)
         </th>
-        <th>
+        <th style="color:white;">
             @Html.DisplayNameFor(model => model.RoleName)
         </th>
         <th></th>
@@ -22,16 +22,17 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td hidden>
             @Html.DisplayFor(modelItem => item.RoleID)
         </td>
-        <td>
+        <td style="color:white;">
             @Html.DisplayFor(modelItem => item.RoleName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new {  id=item.RoleID }) |
             @Html.ActionLink("Details", "Details", new {  id=item.RoleID }) |
-            @Html.ActionLink("Delete", "Delete", new {  id=item.RoleID })
+            @Html.ActionLink("Delete", "Delete", new {  id=item.RoleID }) |
+            @Html.ActionLink("Add User and Character", "Create", new { id = item.RoleID, Controller="Multi"})
         </td>
     </tr>
 }

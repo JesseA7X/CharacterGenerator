@@ -4,21 +4,35 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLogicLayer;
+using System.ComponentModel.DataAnnotations;
 
 namespace CharacterGeneratorWeb.Models
 {
     public class CharacterGeneratorModel
     {
+        [Display(Name ="Str")]
         public int StrengthScore { get; set; }  public int ModStr { get; set; }
+        [Display(Name = "Dex")]
         public int DexterityScore { get; set; } public int ModDex { get; set; }
+        [Display(Name = "Con")]
         public int ConstitutionScore { get; set; } public int ModCon { get; set; }
+        [Display(Name = "Int")]
         public int IntelligenceScore { get; set; } public int ModInt { get; set; }
+        [Display(Name = "Wis")]
         public int WisdomScore { get; set; } public int ModWis { get; set; }
+        [Display(Name = "Cha")]
         public int CharismaScore { get; set; } public int ModCha { get; set; }
-        public int ClassID { get; set; } 
+        public int ClassID { get; set; }
         public int RaceID { get; set; }
+        [Display(Name = "Class")]
+        [Required]
         public List<SelectListItem> ClassNames { get; set; }
+        [Display(Name = "Race")]
+        [Required]
         public List<SelectListItem> RaceNames { get; set; }
+        [Display(Name = "Name")]
+        [Required]
+        public string CharacterName { get; set; }
         public CharacterBLL BaseCharacter
         {
             get { CharacterBLL proposedReturnValue = new CharacterBLL();
@@ -28,6 +42,7 @@ namespace CharacterGeneratorWeb.Models
                 proposedReturnValue.IntelligenceScore = this.IntelligenceScore;
                 proposedReturnValue.WisdomScore = this.WisdomScore;
                 proposedReturnValue.CharismaScore = this.CharismaScore;
+                proposedReturnValue.CharacterName = this.CharacterName;
                 return proposedReturnValue;
             }
             set { this.StrengthScore = value.StrengthScore;
@@ -36,6 +51,7 @@ namespace CharacterGeneratorWeb.Models
                 this.IntelligenceScore = value.IntelligenceScore;
                 this.WisdomScore = value.WisdomScore;
                 this.CharismaScore = value.CharismaScore;
+                this.CharacterName = value.CharacterName;
             }
         }
 
@@ -50,6 +66,9 @@ namespace CharacterGeneratorWeb.Models
                 proposedReturnValue.IntelligenceScore = ModInt;
                 proposedReturnValue.WisdomScore = ModWis;
                 proposedReturnValue.CharismaScore = ModCha;
+                proposedReturnValue.RaceID = RaceID;
+                proposedReturnValue.ClassID = ClassID;
+                proposedReturnValue.CharacterName = CharacterName;
                 return proposedReturnValue;
             }
             set

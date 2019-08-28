@@ -126,6 +126,8 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GenerateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MultiController.cs" />
+    <Compile Include="Controllers\MyCharacterController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -134,8 +136,10 @@
     </Compile>
     <Compile Include="Models\CharacterGeneratorModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Multi.cs" />
     <Compile Include="Models\MustBeInRoleAttribute.cs" />
     <Compile Include="Models\MustBeLoggedInAttribute.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,12 +147,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\CereCreate.png" />
+    <Content Include="Content\Images\die.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ErrorLog.Log" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -171,7 +178,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Characters.cshtml" />
@@ -209,6 +215,15 @@
     <Content Include="Views\Generate\Generate.cshtml" />
     <Content Include="Views\Generate\gen2.cshtml" />
     <Content Include="Views\Generate\preview.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\MyCharacter\Create.cshtml" />
+    <Content Include="Views\MyCharacter\Delete.cshtml" />
+    <Content Include="Views\MyCharacter\Details.cshtml" />
+    <Content Include="Views\MyCharacter\Edit.cshtml" />
+    <Content Include="Views\MyCharacter\Index.cshtml" />
+    <Content Include="Views\Create.cshtml" />
+    <Content Include="Views\Multi\Create.cshtml" />
+    <Content Include="Views\Shared\ItemNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

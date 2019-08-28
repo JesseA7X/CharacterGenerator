@@ -8,9 +8,12 @@ using CharacterGeneratorWeb.Models;
 
 namespace CharacterGeneratorWeb.Controllers
 {
-    [MustBeLoggedIn]public class UserController : Controller
+    [MustBeLoggedIn]
+    [MustBeInRole(Roles = "Admin")]
+    public class UserController : Controller
     {
 
+        // this function is to help populate the  role dropdown
         List<SelectListItem> GetRoleItems()
         {
             List<SelectListItem> ProposedReturnValue = new List<SelectListItem>();
@@ -55,7 +58,8 @@ namespace CharacterGeneratorWeb.Controllers
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    Model = ctx.GetUsers(0, 20);
+                    int usercount = ctx.ObtainUserCount();
+                    Model = ctx.GetUsers(0, usercount);
                 }
             }
             catch (Exception ex)
@@ -78,7 +82,7 @@ namespace CharacterGeneratorWeb.Controllers
                     User = ctx.FindUserByUserID(id);
                     if (null == User)
                     {
-                        return View("ItemNotFound"); // BKW make this view
+                        return View("ItemNotFound"); 
                     }
                 }
             }
@@ -139,7 +143,7 @@ namespace CharacterGeneratorWeb.Controllers
                 ViewBag.Exception = ex;
                 return View("Error");
             }
-            ViewBag.Roles = GetRoleItems();
+            //ViewBag.Roles = GetRoleItems();
             return View(User);
         }
 
@@ -159,7 +163,7 @@ namespace CharacterGeneratorWeb.Controllers
             catch (Exception ex)
             {
                 ViewBag.Exception = ex;
-                return View();
+                return View("Error");
             }
         }
 

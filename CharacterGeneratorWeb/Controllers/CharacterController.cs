@@ -9,37 +9,13 @@ using Lumberjack;
 
 namespace CharacterGeneratorWeb.Controllers
 {
-    [MustBeLoggedIn]public class CharacterController : Controller
+    [MustBeLoggedIn]
+    [MustBeInRole(Roles = "Admin")]
+    public class CharacterController : Controller
     {
-        public ActionResult MyIndex(int PageNumber, int PageSize)
-        {
-            List<CharacterBLL> Model = new List<CharacterBLL>();
-            try
-            {
-                using (ContextBLL ctx = new ContextBLL())
-                {
-                    UserBLL user = ctx.FindUserByUserName(User.Identity.Name);
-                    if (null == user)
-                    {
-                        return View("Error");
-                    }
-                    else
-                    {
-                        //There is nothing to be put into this clause
-                    }
-                    ViewBag.PageNumber = PageNumber;
-                    ViewBag.PageSize = PageSize;
-                    ViewBag.TotalCharacterCount = ctx.ObtainCharactersRelatedToUserIDCount(user.UserID);
-                    Model = ctx.GetCharactersRelatedToUserID(user.UserID, PageNumber * PageSize, PageSize);
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Exception = ex;
-                return View("Error");
-            }
-            return View("Index", Model);
-        }
+        
+
+        
 
         public ActionResult Page(int PageNumber, int PageSize)
         {
@@ -63,8 +39,11 @@ namespace CharacterGeneratorWeb.Controllers
         }
 
         //GET: Character
-        public ActionResult Index(int PageNumber, int PageSize)
+        public ActionResult Index()
         {
+            //return RedirectToRoute(new { Controller = "XXX", Action = "Page", PageNumber = 0, PageSize = ApplicationConfig.DefaultPageSize });
+            int PageNumber = 0;
+            int PageSize = ApplicationConfig.DefaultPageSize;
             List<CharacterBLL> Model = new List<CharacterBLL>();
             try
             {
@@ -83,7 +62,6 @@ namespace CharacterGeneratorWeb.Controllers
             }
             return View(Model);
         }
-
         // GET: Character/Details/5
         public ActionResult Details(int id)
         {
@@ -107,7 +85,9 @@ namespace CharacterGeneratorWeb.Controllers
             return View(character);
         }
 
+
         // GET: Character/Create
+        [MustBeInRole(Roles = "Admin,VerifiedUser")]
         public ActionResult Create()
         {
             CharacterBLL defcharacter = new CharacterBLL();
@@ -115,7 +95,10 @@ namespace CharacterGeneratorWeb.Controllers
             return View(defcharacter);
         }
 
+
         // POST: Character/Create
+        [MustBeInRole(Roles = "Admin,VerifiedUser")]
+        
         [HttpPost]
         public ActionResult Create(CharacterBLL collection)
         {
@@ -226,9 +209,9 @@ namespace CharacterGeneratorWeb.Controllers
                         // TODO: Add insert logic here
                         using (ContextBLL ctx = new ContextBLL())
                         {
-                            ctx.DeleteCharacter(collection);
+                            ctx.DeleteCharacter(id);
                         }
-                        return RedirectToAction("Index");
+                        return RedirectToAction("MyIndex");
                     }
                     catch (Exception ex)
                     {

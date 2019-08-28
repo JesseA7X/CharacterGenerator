@@ -1,23 +1,23 @@
 ﻿@model IEnumerable<BusinessLogicLayer.RaceBLL>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Races";
 }
 
-<h2>Index</h2>
+<h2 style="color:white;">Race Listing</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th hidden>
             @Html.DisplayNameFor(model => model.RaceID)
         </th>
-        <th>
+        <th style="color:white;">
             @Html.DisplayNameFor(model => model.RaceName)
         </th>
-        <th>
+        <th hidden>
             @Html.DisplayNameFor(model => model.RaceModifier)
         </th>
         <th></th>
@@ -25,13 +25,13 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td hidden>
             @Html.DisplayFor(modelItem => item.RaceID)
         </td>
-        <td>
+        <td style="color:white;">
             @Html.DisplayFor(modelItem => item.RaceName)
         </td>
-        <td>
+        <td hidden>
             @Html.DisplayFor(modelItem => item.RaceModifier)
         </td>
         <td>

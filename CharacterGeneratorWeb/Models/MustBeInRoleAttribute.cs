@@ -8,6 +8,10 @@ namespace CharacterGeneratorWeb.Models
 {
     public class MustBeInRoleAttribute : AuthorizeAttribute
     {
+        public MustBeInRoleAttribute()
+        {
+
+        }
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             if(this.Roles.Split(',').Any(filterContext.HttpContext.User.IsInRole))

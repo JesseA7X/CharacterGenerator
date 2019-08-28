@@ -1,0 +1,119 @@
+﻿@model CharacterGeneratorWeb.Multi
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 style="color:white;">Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4 style="color:white;">Multi</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <fieldset>
+        <div class="form-group" style="color:white;">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="color:white;">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="color:white;">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="color:white;">
+            @Html.LabelFor(model => model.PasswordAgain, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PasswordAgain, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PasswordAgain, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+
+        <div class="form-group">
+            <div style="color:white;">
+                @Html.Label("Existing Roles", new { @class = "control-label col-md-2" })
+            </div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.RoleID, (IEnumerable<SelectListItem>)ViewBag.Roles, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="color:white;">
+            @Html.Label("Or, New Role Name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewRoleName, new { htmlAttributes = new { @class = "form-control", placeholder = "Type Role Name here to create it" } })
+                @Html.ValidationMessageFor(model => model.NewRoleName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="form-group" hidden>
+        <div style="color:white;">
+            @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="color:white;">
+        @Html.LabelFor(model => model.CharacterName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CharacterName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CharacterName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <div style="color:white;">
+            @Html.LabelFor(model => model.ClassID, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ClassID, (IEnumerable<SelectListItem>)ViewBag.Classes, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ClassID, "", new { @class = "text-danger" })
+        </div>
+    </div>   
+
+    <div class="form-group">
+        <div  style="color:white;">
+            @Html.LabelFor(model => model.RaceID, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.RaceID, (IEnumerable<SelectListItem>)ViewBag.Races, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RaceID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "", "Role")
+</div>

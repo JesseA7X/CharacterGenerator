@@ -8,6 +8,7 @@ namespace DataAccessLayer
 {
     public class UserDAL
     {
+        // the region tags arent needed but they were used as a learning tool to help visualize the shape of the code
         #region Direct Properties
         public int UserID { get; set; }
         public string UserName { get; set; }
@@ -23,6 +24,7 @@ namespace DataAccessLayer
 
         public override string ToString()
         {
+            // this is only used by a console app for testing not used by mvc
             return $"User: UserID:{UserID,5} UserName:{UserName} Email:{Email} RoleID:{RoleID} Hash:{Hash} Salt:{Salt} RoleName:{RoleName}";
         }
     }

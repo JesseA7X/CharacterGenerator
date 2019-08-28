@@ -69,6 +69,7 @@
     <Compile Include="ClassBLL.cs" />
     <Compile Include="ClassModifier.cs" />
     <Compile Include="ContextBLL.cs" />
+    <Compile Include="MeaningfulCalc.cs" />
     <Compile Include="Modifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RaceBLL.cs" />

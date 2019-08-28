@@ -8,6 +8,7 @@ using Lumberjack;
 
 namespace DataAccessLayer
 {
+    // IDisposable is being used to get rid of heavy objects such as _connection
     public class ContextDAL : IDisposable
     {
         #region Context Stuff
@@ -56,6 +57,7 @@ namespace DataAccessLayer
         }
         #endregion
 
+        // the following regions are methods being used to implement the stored procedures from the database
         #region Role Stuff
         public RoleDAL FindRoleByRoleID(int RoleID)
         {
@@ -168,6 +170,7 @@ namespace DataAccessLayer
             return proposedReturnValue;
         }
 
+        // I chose to use a just update instead of a safe update because there is such a minimal occurence of a record being updated by multiple users that it makes the most sense to use a just update, and in the off chance that it did occur it wouldnt be a breaking update
         public void JustUpdateRole(int RoleID, string RoleName)
         {
 
@@ -228,6 +231,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@UserID", UserID);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        // calling the constructor and verifies that the reader matches what we expect
                         UserMapper m = new UserMapper(reader);
                         int count = 0;
                         while (reader.Read())
@@ -403,14 +407,15 @@ namespace DataAccessLayer
                 EnsureConnected();
                 using (SqlCommand command = new SqlCommand("CreateUser", _connection))
                 {
+                    
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@UserID", 0);
                     command.Parameters.AddWithValue("@UserName", UserName);
                     command.Parameters.AddWithValue("@Email", Email);
+                    command.Parameters.AddWithValue("@RoleID", RoleID);
                     command.Parameters.AddWithValue("@Hash", Hash);
                     command.Parameters.AddWithValue("@Salt", Salt);
-                    command.Parameters.AddWithValue("@RoleName", RoleName);
-                    command.Parameters["UserID"].Direction = System.Data.ParameterDirection.Output;
+                    command.Parameters["@UserID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();
                     proposedReturnValue =
                         Convert.ToInt32(command.Parameters["@UserID"].Value);
@@ -436,9 +441,10 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@UserID", UserID);
                     command.Parameters.AddWithValue("@UserName", UserName);
                     command.Parameters.AddWithValue("@Email", Email);
+                    command.Parameters.AddWithValue("@RoleID", RoleID);
                     command.Parameters.AddWithValue("@Hash", Hash);
                     command.Parameters.AddWithValue("@Salt", Salt);
-                    command.Parameters.AddWithValue("@RoleName", RoleName);
+                    //command.Parameters.AddWithValue("@RoleName", RoleName);
 
                     command.ExecuteNonQuery();
 
@@ -451,6 +457,7 @@ namespace DataAccessLayer
 
         }
 
+        // delete user is my cascading delete so before it deletes the user it will delete all of their characters becuase there is no feasible reason why i would delete a user and keep their characters
         public void DeleteUser(int UserID)
         {
 
@@ -671,7 +678,7 @@ namespace DataAccessLayer
             return proposedReturnValue;
         }
 
-        public int CreateCharacter(int CharacterID, int UserID, string CharacterName, int ClassID, int RaceID, int StrengthScore, int DexterityScore, int ConstitutionScore, int IntelligenceScore, int WisdomScore, int CharismaScore, string UserName, string ClassName, string RaceName)
+        public int CreateCharacter(int UserID, string CharacterName, int ClassID, int RaceID, int StrengthScore, int DexterityScore, int ConstitutionScore, int IntelligenceScore, int WisdomScore, int CharismaScore)
         {
             int proposedReturnValue = -1;
             try
@@ -683,6 +690,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@CharacterID", 0);
                     command.Parameters.AddWithValue("@UserID", UserID);
                     command.Parameters.AddWithValue("@CharacterName", CharacterName);
+                    command.Parameters.AddWithValue("@ClassID", ClassID);
                     command.Parameters.AddWithValue("@RaceID", RaceID);
                     command.Parameters.AddWithValue("@StrengthScore", StrengthScore);
                     command.Parameters.AddWithValue("@DexterityScore", DexterityScore);
@@ -690,10 +698,10 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@IntelligenceScore", IntelligenceScore);
                     command.Parameters.AddWithValue("@WisdomScore", WisdomScore);
                     command.Parameters.AddWithValue("@CharismaScore", CharismaScore);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@ClassName", ClassName);
-                    command.Parameters.AddWithValue("@RaceName", RaceName);
-                    command.Parameters["CharacterID"].Direction = System.Data.ParameterDirection.Output;
+                    //command.Parameters.AddWithValue("@UserName", UserName);
+                    //command.Parameters.AddWithValue("@ClassName", ClassName);
+                    //command.Parameters.AddWithValue("@RaceName", RaceName);
+                    command.Parameters["@CharacterID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();
                     proposedReturnValue =
                         Convert.ToInt32(command.Parameters["@CharacterID"].Value);
@@ -715,9 +723,10 @@ namespace DataAccessLayer
                 using (SqlCommand command = new SqlCommand("JustUpdateCharacter", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@CharacterID", 0);
+                    command.Parameters.AddWithValue("@CharacterID", CharacterID);
                     command.Parameters.AddWithValue("@UserID", UserID);
                     command.Parameters.AddWithValue("@CharacterName", CharacterName);
+                    command.Parameters.AddWithValue("@ClassID", ClassID);
                     command.Parameters.AddWithValue("@RaceID", RaceID);
                     command.Parameters.AddWithValue("@StrengthScore", StrengthScore);
                     command.Parameters.AddWithValue("@DexterityScore", DexterityScore);
@@ -725,9 +734,9 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@IntelligenceScore", IntelligenceScore);
                     command.Parameters.AddWithValue("@WisdomScore", WisdomScore);
                     command.Parameters.AddWithValue("@CharismaScore", CharismaScore);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@ClassName", ClassName);
-                    command.Parameters.AddWithValue("@RaceName", RaceName);
+                    //command.Parameters.AddWithValue("@UserName", UserName);
+                    //command.Parameters.AddWithValue("@ClassName", ClassName);
+                    //command.Parameters.AddWithValue("@RaceName", RaceName);
 
                     command.ExecuteNonQuery();
 
@@ -857,10 +866,10 @@ namespace DataAccessLayer
                 using (SqlCommand command = new SqlCommand("CreateRace", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@RaceID", 0);
+                    command.Parameters.AddWithValue("@RaceID", RaceID);
                     command.Parameters.AddWithValue("@RaceName", RaceName);
                     command.Parameters.AddWithValue("@Racemodifier", RaceModifier);
-                    command.Parameters["RaceID"].Direction = System.Data.ParameterDirection.Output;
+                    command.Parameters["@RaceID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();
                     proposedReturnValue =
                         Convert.ToInt32(command.Parameters["@RaceID"].Value);
@@ -882,7 +891,7 @@ namespace DataAccessLayer
                 using (SqlCommand command = new SqlCommand("JustUpdateRace", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@RaceID", 0);
+                    command.Parameters.AddWithValue("@RaceID", RaceID);
                     command.Parameters.AddWithValue("@RaceName", RaceName);
                     command.Parameters.AddWithValue("@Racemodifier", RaceModifier);
 
@@ -1181,11 +1190,11 @@ namespace DataAccessLayer
                 using (SqlCommand command = new SqlCommand("CreateClass", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@ClassID", 0);
+                    command.Parameters.AddWithValue("@ClassID", ClassID);
                     command.Parameters.AddWithValue("@ClassName", ClassName);
                     command.Parameters.AddWithValue("@Description", Description);
                     command.Parameters.AddWithValue("@ClassModifier", ClassModifier);
-                    command.Parameters["ClassID"].Direction = System.Data.ParameterDirection.Output;
+                    command.Parameters["@ClassID"].Direction = System.Data.ParameterDirection.Output;
                     command.ExecuteNonQuery();
                     proposedReturnValue =
                         Convert.ToInt32(command.Parameters["@ClassID"].Value);
@@ -1207,7 +1216,7 @@ namespace DataAccessLayer
                 using (SqlCommand command = new SqlCommand("JustUpdateClass", _connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@ClassID", 0);
+                    command.Parameters.AddWithValue("@ClassID", ClassID);
                     command.Parameters.AddWithValue("@ClassName", ClassName);
                     command.Parameters.AddWithValue("@Description", Description);
                     command.Parameters.AddWithValue("@Classmodifier", ClassModifier);

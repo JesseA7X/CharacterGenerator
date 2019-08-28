@@ -41,6 +41,7 @@ namespace Lumberjack
             // this is our failsafe if the database is down
             catch (Exception exc)
             {
+              // mappath returns the path to the physical directory for the website
                 var p = System.Web.HttpContext.Current.Server.MapPath("~");
                 p += @"ErrorLog.Log";
                 System.IO.File.AppendAllText(p, "while attempting to record the original exception to the database, this exception occurred\r\n");

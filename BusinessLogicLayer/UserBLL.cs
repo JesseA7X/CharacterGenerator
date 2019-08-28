@@ -16,6 +16,7 @@ namespace BusinessLogicLayer
         }
         public UserBLL(UserDAL dal)
         {
+            // this refers to the current object which is the bll
             this.UserID = dal.UserID;
             this.UserName = dal.UserName;
             this.Email = dal.Email;

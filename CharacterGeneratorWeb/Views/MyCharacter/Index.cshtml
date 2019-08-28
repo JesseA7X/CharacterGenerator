@@ -1,0 +1,126 @@
+﻿@model IEnumerable<BusinessLogicLayer.CharacterBLL>
+
+@{
+    ViewBag.Title = "Characters";
+    int PageNumber = ViewBag.PageNumber;
+    int PageSize = ViewBag.PageSize;
+    int TotalCharacterCount = ViewBag.TotalCharacterCount;
+    int TotalPageButtonCount = 1 + TotalCharacterCount / PageSize;
+    int CorrectedPageButtonCount = (TotalPageButtonCount > 9) ? 10 : TotalPageButtonCount;
+}
+
+<h2 style="color:white;">My Characters</h2>
+
+
+<p>
+    @Html.ActionLink("Create New","",  "Generate" )
+</p>
+
+@{
+    for (int i = 0; i < CorrectedPageButtonCount; i++)
+    {
+        string classstring = (i == PageNumber) ? "btn btn-sm btn-success glyphicon glyphicon-circle-arrow-down" : "btn btn-sm btn-danger glyphicon glyphicon-option-horizontal";
+        @Html.ActionLink($"-Page {i+1}-", "MyPage", new { PageNumber = i, PageSize = PageSize }, new { @class = classstring });
+    }
+}
+<table class="table">
+    <tr>
+        <th hidden>
+            @Html.DisplayNameFor(model => model.CharacterID)
+        </th>
+        <th hidden>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.CharacterName)
+        </th>
+        <th hidden>
+            @Html.DisplayNameFor(model => model.ClassID)
+        </th>
+        <th hidden>
+            @Html.DisplayNameFor(model => model.RaceID)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.StrengthScore)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.DexterityScore)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.ConstitutionScore)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.IntelligenceScore)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.WisdomScore)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.CharismaScore)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.ClassName)
+        </th>
+        <th style="color:white;">
+            @Html.DisplayNameFor(model => model.RaceName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.CharacterID)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.CharacterName)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.ClassID)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.RaceID)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.StrengthScore)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.DexterityScore)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.ConstitutionScore)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.IntelligenceScore)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.WisdomScore)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.CharismaScore)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.ClassName)
+            </td>
+            <td style="color:white;">
+                @Html.DisplayFor(modelItem => item.RaceName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.CharacterID }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.CharacterID }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.CharacterID })
+            </td>
+        </tr>
+    }
+
+</table>

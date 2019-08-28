@@ -4,17 +4,17 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="color:white;">Details</h2>
 
 <div>
-    <h4>CharacterBLL</h4>
+    <h4 style="color:white;">Admin View</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="dl-horizontal" style="color:white;">
+        <dt hidden>
             @Html.DisplayNameFor(model => model.CharacterID)
         </dt>
 
-        <dd>
+        <dd hidden>
             @Html.DisplayFor(model => model.CharacterID)
         </dd>
 
@@ -126,5 +126,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new {  id = Model.CharacterID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Page", "Character")
 </p>

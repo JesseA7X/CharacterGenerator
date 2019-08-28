@@ -74,6 +74,7 @@ namespace CharacterGeneratorWeb.Controllers
         }
 
         // GET: Race/Create
+        [MustBeInRole(Roles = "Admin")]
         public ActionResult Create()
         {
             RaceBLL defRace = new RaceBLL();
@@ -83,6 +84,7 @@ namespace CharacterGeneratorWeb.Controllers
 
         // POST: Race/Create
         [HttpPost]
+        [MustBeInRole(Roles = "Admin")]
         public ActionResult Create(RaceBLL collection)
         {
 
@@ -105,6 +107,7 @@ namespace CharacterGeneratorWeb.Controllers
         }
 
         // GET: Race/Edit/5
+        [MustBeInRole(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
 
@@ -135,6 +138,7 @@ namespace CharacterGeneratorWeb.Controllers
 
         // POST: Race/Edit/5
         [HttpPost]
+        [MustBeInRole(Roles = "Admin")]
         public ActionResult Edit(int id, RaceBLL collection)
         {
 
@@ -160,6 +164,7 @@ namespace CharacterGeneratorWeb.Controllers
         }
 
         // GET: Race/Delete/5
+        [MustBeInRole(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
 
@@ -190,6 +195,7 @@ namespace CharacterGeneratorWeb.Controllers
 
         // POST: Race/Delete/5
         [HttpPost]
+        [MustBeInRole(Roles = "Admin")]
         public ActionResult Delete(int id, RaceBLL collection)
         {
 
@@ -201,7 +207,7 @@ namespace CharacterGeneratorWeb.Controllers
                         // TODO: Add insert logic here
                         using (ContextBLL ctx = new ContextBLL())
                         {
-                            ctx.DeleteRace(collection);
+                            ctx.DeleteRace(id);
                         }
                         return RedirectToAction("Index");
                     }

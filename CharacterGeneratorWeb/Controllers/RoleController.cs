@@ -8,7 +8,9 @@ using CharacterGeneratorWeb.Models;
 
 namespace CharacterGeneratorWeb.Controllers
 {
-    [MustBeLoggedIn]public class RoleController : Controller
+    [MustBeLoggedIn]
+    [MustBeInRole(Roles = "Admin")]
+    public class RoleController : Controller
     {
         // GET: Role
         public ActionResult Index()
@@ -139,7 +141,7 @@ namespace CharacterGeneratorWeb.Controllers
             {
                 using (ContextBLL ctx = new ContextBLL())
                 {
-                    ctx.CreateRole(collection);
+                    ctx.JustUpdateRole(collection);
                 }
 
                 return RedirectToAction("Index");

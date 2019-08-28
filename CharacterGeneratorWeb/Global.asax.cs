@@ -7,11 +7,13 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Security.Principal;
 using System.Threading;
+using CharacterGeneratorWeb.Models;
 
 namespace CharacterGeneratorWeb
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        
         protected void Application_Start()
         {
             ApplicationConfig.RegisterApplicationVariables();

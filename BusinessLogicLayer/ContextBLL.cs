@@ -26,61 +26,20 @@ namespace BusinessLogicLayer
             return false;
         }
 
+        // this is a random dice roller to assign the stats to the created characters
         Random diceRoll = new Random();
         public int Roll()
         {
-            List<int> rolls = new List<int>();
-            for (int x = 0; x < 4; x++)
-            {
-                rolls.Add(diceRoll.Next(1,7));
-            }
-            return rolls.Sum() - rolls.Min();
+            MeaningfulCalc calc = new MeaningfulCalc();
+            return calc.Roll();
         }
-        // orignal code below updated in order to roll 4 dice and drop the low
-        //{
-        //    int diceRoll1 = diceRoll.Next(1, 7);
-        //    int diceRoll2 = diceRoll.Next(1, 7);
-        //    int diceRoll3 = diceRoll.Next(1, 7);
-        //    int diceRoll4 = diceRoll.Next(1, 7);
-        //    int totalRoll = (diceRoll1 + diceRoll2 + diceRoll3 + diceRoll4);
-        //    return totalRoll;
-        //}
+        
 
         public void CharacterModification(CharacterBLL u, List<Modifier> Modifiers)
         {
-            foreach(Modifier m in Modifiers)
-            {
-                switch((m.StatID))
-                {
-                    case (6):
-                        u.StrengthScore = u.StrengthScore + m.ModifierAmount;
-                        break;
-                    case (7):
-                        u.DexterityScore = u.DexterityScore + m.ModifierAmount;
-                        break;
-                    case (8):
-                        u.ConstitutionScore = u.ConstitutionScore + m.ModifierAmount;
-                        break;
-                    case (9):
-                        u.IntelligenceScore = u.IntelligenceScore + m.ModifierAmount;
-                        break;
-                    case (10):
-                        u.WisdomScore = u.WisdomScore + m.ModifierAmount;
-                        break;
-                    case (11):
-                        u.CharismaScore = u.CharismaScore + m.ModifierAmount;
-                        break;
-                }
-                    
-            }
-        }
-            
-
-        
-            
-
-
-
+            MeaningfulCalc calc = new MeaningfulCalc();
+            calc.CharacterModification(u, Modifiers);
+        }                          
 
         public ContextBLL()
         {
@@ -134,7 +93,7 @@ namespace BusinessLogicLayer
             return proposedReturnValue;
         }
 
-        public int CreateRole(RoleBLL role)
+        public int CreateRole(RoleBLL role) // this is needed for posting in mvc
         {
             int proposedReturnValue = -1;
             proposedReturnValue = _context.CreateRole(role.RoleName);
@@ -218,6 +177,7 @@ namespace BusinessLogicLayer
         {
             List<UserBLL> ProposedReturnValue = new List<UserBLL>();
             List<UserDAL> ListOfDataLayerObjects = _context.GetUsersRelatedToRoles(RoleID, skip, take);
+            // converting all datalayer objects into business layer objects
             foreach (UserDAL user in ListOfDataLayerObjects)
             {
                 UserBLL BusinessObject = new UserBLL(user);
@@ -240,6 +200,7 @@ namespace BusinessLogicLayer
             return proposedReturnValue;
         }
 
+        // this is a way mvc action methods can be called
         public int CreateUser(UserBLL user)
         {
             int proposedReturnValue = -1;
@@ -342,17 +303,17 @@ namespace BusinessLogicLayer
             return proposedReturnValue;
         }
 
-        public int CreateCharacter(int CharacterID, int UserID, string CharacterName, int ClassID, int RaceID, int StrengthScore, int DexterityScore, int ConstitutionScore, int IntelligenceScore, int WisdomScore, int CharismaScore, string UserName, string ClassName, string RaceName)
+        public int CreateCharacter( int UserID, string CharacterName, int ClassID, int RaceID, int StrengthScore, int DexterityScore, int ConstitutionScore, int IntelligenceScore, int WisdomScore, int CharismaScore)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.CreateCharacter(CharacterID, UserID, CharacterName, ClassID, RaceID, StrengthScore, DexterityScore, ConstitutionScore, IntelligenceScore, WisdomScore, CharismaScore, UserName, ClassName, RaceName);
+            proposedReturnValue = _context.CreateCharacter( UserID, CharacterName, ClassID, RaceID, StrengthScore, DexterityScore, ConstitutionScore, IntelligenceScore, WisdomScore, CharismaScore);
             return proposedReturnValue;
         }
 
         public int CreateCharacter(CharacterBLL character)
         {
             int proposedReturnValue = -1;
-            proposedReturnValue = _context.CreateCharacter(character.CharacterID, character.UserID, character.CharacterName, character.ClassID, character.RaceID, character.StrengthScore, character.DexterityScore, character.ConstitutionScore, character.IntelligenceScore, character.WisdomScore, character.CharismaScore, character.UserName, character.ClassName, character.RaceName);
+            proposedReturnValue = _context.CreateCharacter( character.UserID, character.CharacterName, character.ClassID, character.RaceID, character.StrengthScore, character.DexterityScore, character.ConstitutionScore, character.IntelligenceScore, character.WisdomScore, character.CharismaScore);
             return proposedReturnValue;
         }
 
@@ -577,12 +538,12 @@ namespace BusinessLogicLayer
 
         public void DeleteClass(int ClassID)
         {
-            _context.DeleteRace(ClassID);
+            _context.DeleteClass(ClassID);
         }
 
         public void DeleteClass(ClassBLL @class)
         {
-            _context.DeleteRace(@class.ClassID);
+            _context.DeleteClass(@class.ClassID);
         }
         #endregion
 

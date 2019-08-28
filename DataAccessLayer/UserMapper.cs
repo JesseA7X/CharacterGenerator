@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SqlClient;// these usings are giving more convienient access to what i already have access to anyway
+// the using is code i write not something i do
+// refrencing gives me access to new features that i didnt have access to before
+// adding a refrence is something you do not code i write
 
 namespace DataAccessLayer
 {
     public class UserMapper : Mapper
     {
-        int OffsetToUserID; // expected to be 0
+        // these are storage regions for the values that we expect
+        int OffsetToUserID; // expected to be 0 because of the shape
         int OffsetToUserName; // expected to be 1
         int OffsetToEmail; // expected to be 2
         int OffsetToRoleID; // expected to be 3
@@ -17,6 +21,7 @@ namespace DataAccessLayer
         int OffsetToSalt; // expected to be 5
         int OffsetToRoleName; // expected to be 6
 
+        // this is where we verify the contents of the storage regions is valid
         public UserMapper(SqlDataReader reader)
         {
             OffsetToUserID = reader.GetOrdinal("UserID");
@@ -39,13 +44,13 @@ namespace DataAccessLayer
         public UserDAL UserFromReader(SqlDataReader reader)
         {
             UserDAL proposedReturnValue = new UserDAL();
-            proposedReturnValue.UserID = reader.GetInt32(OffsetToUserID);
-            proposedReturnValue.UserName = reader.GetString(OffsetToUserName);
-            proposedReturnValue.Email = reader.GetString(OffsetToEmail);
-            proposedReturnValue.RoleID = reader.GetInt32(OffsetToRoleID);
-            proposedReturnValue.Hash = reader.GetString(OffsetToHash);
-            proposedReturnValue.Salt = reader.GetString(OffsetToSalt);
-            proposedReturnValue.RoleName = reader.GetString(OffsetToRoleName);
+            proposedReturnValue.UserID = GetInt32OrDefault(reader,OffsetToUserID);
+            proposedReturnValue.UserName = GetStringOrDefault(reader, OffsetToUserName);
+            proposedReturnValue.Email = GetStringOrDefault(reader, OffsetToEmail);
+            proposedReturnValue.RoleID = GetInt32OrDefault(reader, OffsetToRoleID);
+            proposedReturnValue.Hash = GetStringOrDefault(reader, OffsetToHash);
+            proposedReturnValue.Salt = GetStringOrDefault(reader, OffsetToSalt);
+            proposedReturnValue.RoleName = GetStringOrDefault(reader, OffsetToRoleName);
             return proposedReturnValue;
         }
     }

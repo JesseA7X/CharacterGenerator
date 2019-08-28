@@ -4,17 +4,17 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="color:white;">Details</h2>
 
 <div>
-    <h4>UserBLL</h4>
+    <h4 style="color:white;">All about you</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="dl-horizontal" style="color:white;">
+        <dt hidden>
             @Html.DisplayNameFor(model => model.UserID)
         </dt>
 
-        <dd>
+        <dd hidden>
             @Html.DisplayFor(model => model.UserID)
         </dd>
 
@@ -34,27 +34,27 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
-        <dt>
+        <dt hidden>
             @Html.DisplayNameFor(model => model.RoleID)
         </dt>
 
-        <dd>
+        <dd hidden>
             @Html.DisplayFor(model => model.RoleID)
         </dd>
 
-        <dt>
+        <dt hidden>
             @Html.DisplayNameFor(model => model.Hash)
         </dt>
 
-        <dd>
+        <dd hidden>
             @Html.DisplayFor(model => model.Hash)
         </dd>
 
-        <dt>
+        <dt hidden>
             @Html.DisplayNameFor(model => model.Salt)
         </dt>
 
-        <dd>
+        <dd hidden>
             @Html.DisplayFor(model => model.Salt)
         </dd>
 
