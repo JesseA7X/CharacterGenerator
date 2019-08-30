@@ -4,24 +4,37 @@
     ViewBag.Title = "Races";
 }
 
+    <style>
+        .table-hover tbody tr:hover {
+            color: #fff;
+            background-color: #cf0404;
+        }
+
+        a {
+            color: #fff;
+        }
+    </style>
+
 <h2 style="color:white;">Race Listing</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th hidden>
-            @Html.DisplayNameFor(model => model.RaceID)
-        </th>
-        <th style="color:white;">
-            @Html.DisplayNameFor(model => model.RaceName)
-        </th>
-        <th hidden>
-            @Html.DisplayNameFor(model => model.RaceModifier)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.RaceID)
+            </th>
+            <th style="color:white;">
+                @Html.DisplayNameFor(model => model.RaceName)
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.RaceModifier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
 @foreach (var item in Model) {
     <tr>

@@ -9,6 +9,17 @@
     int CorrectedPageButtonCount = (TotalPageButtonCount > 9) ? 10 : TotalPageButtonCount;
 }
 
+    <style>
+        .table-hover tbody tr:hover {
+            color: #fff;
+            background-color: #cf0404;
+        }
+
+        a {
+            color: #fff;
+        }
+    </style>
+
 <h2 style="color:white;">My Characters</h2>
 
 
@@ -23,7 +34,7 @@
         @Html.ActionLink($"-Page {i+1}-", "MyPage", new { PageNumber = i, PageSize = PageSize }, new { @class = classstring });
     }
 }
-<table class="table">
+<table class="table table-bordered table-hover">
     <tr>
         <th hidden>
             @Html.DisplayNameFor(model => model.CharacterID)

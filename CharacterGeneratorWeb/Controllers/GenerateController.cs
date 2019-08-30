@@ -100,6 +100,9 @@ namespace CharacterGeneratorWeb
                 }
                 defcharacter.ClassNames = ClassItems;
                 defcharacter.RaceNames = RaceItems;
+                //defcharacter.ModifiedCharacter.CharacterName = defcharacter.CharacterName;
+                //defcharacter.ModifiedCharacter.RaceID = defcharacter.RaceID;
+                //defcharacter.ModifiedCharacter.ClassID = defcharacter.ClassID;
                 return View("Preview", defcharacter);
             }
         }

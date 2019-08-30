@@ -4,12 +4,23 @@
     ViewBag.Title = "Roles";
 }
 
+    <style>
+        .table-hover tbody tr:hover {
+            color: #fff;
+            background-color: #cf0404;
+        }
+
+        a {
+            color: #fff;
+        }
+    </style>
+
 <h2 style="color:white;">List of Roles</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered table-hover">
     <tr>
         <th hidden>
             @Html.DisplayNameFor(model => model.RoleID)

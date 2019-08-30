@@ -28,7 +28,7 @@ namespace BusinessLogicLayer
             this.ConstitutionScore = dal.ConstitutionScore;
             this.IntelligenceScore = dal.IntelligenceScore;
             this.WisdomScore = dal.WisdomScore;
-            this.CharismaScore = dal.WisdomScore;
+            this.CharismaScore = dal.CharismaScore;
             this.UserName = dal.UserName;
             this.ClassName = dal.ClassName;
             this.RaceName = dal.RaceName;

@@ -41,7 +41,9 @@ namespace CharacterGeneratorWeb
         [Required]
         public int UserID { get; set; }
         public string CharacterName { get; set; }
+        [Display(Name="Class")]
         public int ClassID { get; set; }
+        [Display(Name ="Race")]
         public int RaceID { get; set; }
         public List<SelectListItem> ClassName { get; set; }
         public List<SelectListItem> RaceName { get; set; }

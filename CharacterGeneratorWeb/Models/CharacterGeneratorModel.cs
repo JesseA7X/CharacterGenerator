@@ -43,6 +43,8 @@ namespace CharacterGeneratorWeb.Models
                 proposedReturnValue.WisdomScore = this.WisdomScore;
                 proposedReturnValue.CharismaScore = this.CharismaScore;
                 proposedReturnValue.CharacterName = this.CharacterName;
+                proposedReturnValue.ClassID = this.ClassID;
+                proposedReturnValue.RaceID = this.RaceID;
                 return proposedReturnValue;
             }
             set { this.StrengthScore = value.StrengthScore;
@@ -52,6 +54,8 @@ namespace CharacterGeneratorWeb.Models
                 this.WisdomScore = value.WisdomScore;
                 this.CharismaScore = value.CharismaScore;
                 this.CharacterName = value.CharacterName;
+                this.ClassID = value.ClassID;
+                this.RaceID = value.RaceID;
             }
         }
 

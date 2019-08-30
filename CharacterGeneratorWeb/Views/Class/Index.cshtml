@@ -2,14 +2,21 @@
 
 @{
     ViewBag.Title = "Index";
+}s
+<style>
+    .table-hover tbody tr:hover {
+  color: #fff;
+  background-color: #cf0404;
 }
 
+    a{color: #fff;}
+</style>
 <h2 style="color:white;">Class Listing</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered table-hover table-dark">
     <tr>
         <th hidden>
             @Html.DisplayNameFor(model => model.ClassID)
