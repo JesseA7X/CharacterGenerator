@@ -31,7 +31,6 @@ namespace CharacterGeneratorWeb.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.Users = ctx.FindUserByUserName(info.UserName);
                     return View(info);
                 }
                 UserBLL user = ctx.FindUserByUserName(info.UserName);
@@ -80,7 +79,6 @@ namespace CharacterGeneratorWeb.Controllers
                 {
                     if (!ModelState.IsValid)
                     {
-                        ViewBag.Users = ctx.FindUserByUserName(newuser.UserName);
                         return View(newuser);
                     }
                     if (null == ctx.FindUserByUserName(newuser.UserName))

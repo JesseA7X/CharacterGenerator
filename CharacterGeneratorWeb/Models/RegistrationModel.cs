@@ -30,7 +30,7 @@ namespace CharacterGeneratorWeb.Models
         [Required]
         [StringLength(MaxPasswordLength, ErrorMessage = "The {0} must be between {2} and {1} characters long.", MinimumLength = MinPasswordLength)]
         [RegularExpression(PasswordRequirements, ErrorMessage = PasswordRequirementsMessage)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password Confirmation")]
         public string PasswordAgain { get; set; }
         public string Message { get; set; }
         
