@@ -26,7 +26,7 @@ namespace BusinessLogicLayer.Tests
         }
 
         [TestMethod()]
-        public void CharacterModificationTest()
+        public void CharacterModificationTestSTR()
         {
             // arrange
             MeaningfulCalc calc = new MeaningfulCalc();
@@ -60,7 +60,7 @@ namespace BusinessLogicLayer.Tests
         }
 
         [TestMethod()]
-        public void CharacterModificationTest2()
+        public void CharacterModificationTestDEX()
         {
             // arrange
             MeaningfulCalc calc = new MeaningfulCalc();
@@ -94,7 +94,7 @@ namespace BusinessLogicLayer.Tests
         }
 
         [TestMethod()]
-        public void CharacterModificationTest3()
+        public void CharacterModificationTestCON()
         {
             // arrange
             MeaningfulCalc calc = new MeaningfulCalc();
@@ -128,7 +128,7 @@ namespace BusinessLogicLayer.Tests
         }
 
         [TestMethod()]
-        public void CharacterModificationTest4()
+        public void CharacterModificationTestINT()
         {
             // arrange
             MeaningfulCalc calc = new MeaningfulCalc();
@@ -162,7 +162,7 @@ namespace BusinessLogicLayer.Tests
         }
 
         [TestMethod()]
-        public void CharacterModificationTest5()
+        public void CharacterModificationTestWIS()
         {
             // arrange
             MeaningfulCalc calc = new MeaningfulCalc();
@@ -196,7 +196,7 @@ namespace BusinessLogicLayer.Tests
         }
 
         [TestMethod()]
-        public void CharacterModificationTest6()
+        public void CharacterModificationTestCHA()
         {
             // arrange
             MeaningfulCalc calc = new MeaningfulCalc();
